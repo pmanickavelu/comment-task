@@ -9,7 +9,7 @@ class UserCommentsController < ApplicationController
   end
 
   def list
-    ids = UserComment.select("max(id) as id","FLOOR(extract(epoch from created_at))::int/300*300 as ct").group("ct").collect {|c| c.id}
+    ids = UserComment.select("max(id) as id","FLOOR(extract(epoch from created_at))::int/300*300 as ct").group("ct, ip").collect {|c| c.id}
     @user_comments = UserComment.where(id: ids).select(:comment_text,:ip,:created_at).order("created_at desc")
   end
 

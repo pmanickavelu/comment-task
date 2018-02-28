@@ -1,0 +1,11 @@
+<%= form_for @user_comment, class:"row", remote: true do |f| %>
+  <div class="col-12">
+    <div class="form-group">
+      <%= f.label :comment_text %>
+      <%= f.text_area :comment_text, class:"form-control" %><br />
+    </div>
+  </div>
+  <div class="col-12">
+    <%= f.submit "Post", class: "btn btn-primary",style: "float: right;" %>
+  </div>
+<% end %>

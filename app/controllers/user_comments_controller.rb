@@ -14,7 +14,8 @@ class UserCommentsController < ApplicationController
   end
   private
     def get_comments
-      ids = UserComment.select("max(id) as id","FLOOR(extract(epoch from created_at))::int/300*300 as ct").group("ct, ip").collect {|c| c.id}
+      @time_slot = params[:time_slot]||5
+      ids = UserComment.select("max(id) as id","FLOOR(extract(epoch from created_at))::int/#{@time_slot*60}*#{@time_slot*60} as ct").group("ct, ip").collect {|c| c.id}
       @user_comments = UserComment.where(id: ids).select(:comment_text,:ip,:created_at).order("created_at desc")
     end
 

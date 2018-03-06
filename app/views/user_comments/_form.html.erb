@@ -9,3 +9,13 @@
     <%= f.submit "Post", class: "btn btn-primary",style: "float: right;" %>
   </div>
 <% end %>
+<div class="clearfix"></div>
+<div class="form-inline">
+  <div class="form-group  col-2">
+    <%= label_tag :time_slot %>
+  </div>
+  <div class="form-group  col-7">
+    <%= number_field_tag :time_slot, @time_slot, class:"form-control col-12", min:1, max:30 %><br />
+  </div>
+    <button type="button" id="set_interval" class="btn btn-primary col-3">Set Interval</button>
+</div>

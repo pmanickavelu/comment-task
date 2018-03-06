@@ -1,0 +1,9 @@
+<% @user_comments.each do |user_comment|%>
+  <div>
+    <div>
+      <h6><%= "comment from #{user_comment.ip} at #{user_comment.created_at}"%></h6>
+      <div><%= raw user_comment.comment_text%></div>
+    </div>
+  </div>
+<% end %>
+    
